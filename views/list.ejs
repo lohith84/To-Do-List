@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body style="background-image: url('/public/ges/background.png');">
+    <div class="box" id="heading">
+        <h1><%=kindofDay%></h1>
+    </div>
+    <div class="box">
+        <ul>
+            <% for(var i=0; i<newListItems.length ; i++){  %>
+                <div class="item">
+                    <input type="checkbox">
+                    <p class="item-text"><%= newListItems[i] %> </p>
+                    <form class="del-form" method="POST" action="/delete-todo">
+                        <input type="hidden" name="id" value="<%= newListItems[i]%>">
+                        <button class="del-button" type="submit"><i class="fa fa-trash-o" style="font-size:30px"></i></button>
+                    </form>
+            </div>
+            <% } %>
+        </ul>
+
+        <form class="item" action="/" method="post">
+            <input type="text" name ="newItem" placeholder="New Item">
+            <button class="plus-button" type="submit" name="button">+</button>
+        </form>
+    </div>
+</body>
+</html>
